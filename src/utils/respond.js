@@ -19,12 +19,15 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const respond = async (id, text, amt_msat) => {
     await delay(1000)
+    let payload = ""
+    if(typeof text === 'object' && text !== null){
+        console.log("response is object, stringifying")
+        payload = JSON.stringify(text)
+    }
     messageClient.sendMessage(
         {
             discussion_id: parseInt(id),
-            payload: JSON.stringify(
-                text.toString()
-            ),
+            payload: payload,
             amt_msat: parseInt(amt_msat)
         },
         (err, res) => {

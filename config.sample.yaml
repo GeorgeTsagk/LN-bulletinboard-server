@@ -8,3 +8,6 @@ items:
   - name: "replaceme" # Name of the content for sale
     price: "42"       # in sats
     content: "The content to be purchased" # The static content of the item
+options:
+  - activate_channel_balance_service: true
+  - channel_balance_price: 100  # in sats
