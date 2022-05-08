@@ -1,2 +1,10 @@
+lightning:
+  url: replaceme
+  tls_path: replaceme
+  macaroon_path: replaceme
 c13n:
   url: replaceme
+items:
+  - name: "replaceme" # Name of the content for sale
+    price: "42"       # in sats
+    content: "The content to be purchased" # The static content of the item

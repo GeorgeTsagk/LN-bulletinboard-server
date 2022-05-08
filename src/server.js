@@ -1,6 +1,8 @@
 const api = require('./config/api-url')
 const entry = require('./handlers/entry')
 
+const listChannels = require('./utils/list-channels')
+
 var PROTO_PATH = __dirname + '/rpc/rpc.proto';
 var grpc = require('@grpc/grpc-js');
 var protoLoader = require('@grpc/proto-loader');
@@ -43,7 +45,8 @@ const openServer = async () => {
         serverError = true
     })
     while(!serverError){
-        await sleep(1000)
+        listChannels.updateChannels()
+        await sleep(30000)
     }
     console.log('Server Exit')
 }

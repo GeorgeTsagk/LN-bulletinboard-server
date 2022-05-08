@@ -18,7 +18,6 @@ var messageClient = new services.MessageService(api.apiUrl(), grpc.credentials.c
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const respond = async (id, text, amt_msat) => {
-    console.log("Attempting response")
     await delay(1000)
     messageClient.sendMessage(
         {
@@ -29,9 +28,12 @@ const respond = async (id, text, amt_msat) => {
             amt_msat: parseInt(amt_msat)
         },
         (err, res) => {
-	    console.log("In callback")
             if(err) console.log(err)
-            if(res) console.log(res)
+            if(res){ 
+                console.log("Delivered Response for:")
+                console.log("\tamt_msat: ", Number(res.sent_message.amt_msat))
+                console.log("\ttotal_fees_msat: ", Number(res.sent_message.total_fees_msat))
+            }
         }
     )
 }

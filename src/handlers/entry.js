@@ -21,7 +21,8 @@ const entryPoint = (message) => {
     const payload = msg?.payload
     const disc_id = msg.discussion_id
     const amtSat = msg?.amt_msat / 1000;
-    console.log("Payload is", payload)
+    console.log("Received request:", payload)
+    console.log("\tfor:", Number(Number(msg.amt_msat)/1000), "sat")
     let itemName = ""
     if(payload.startsWith("{")) {
       const msgObj = JSON.parse(payload)
@@ -29,17 +30,13 @@ const entryPoint = (message) => {
     } else {
       itemName = payload
     }
-    console.log('Item name is:', itemName, ':')
-    console.log("Items are: ", items)
     let selectedItem = {}
     items.forEach( (el) => {
       if (el.name == itemName) {
         selectedItem = el
       }
     })
-    console.log("Selected item is: ", selectedItem)
     if(amtSat >= Number(selectedItem.price)) {
-      console.log("Responding to request")
       resp.respond(disc_id, selectedItem.content, 1000)
     }
 }
