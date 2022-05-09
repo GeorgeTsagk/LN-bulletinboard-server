@@ -61,7 +61,7 @@ const entryPoint = (message) => {
         items: tempItems
       }
       console.log("Responding: ", info)
-      resp.respond(disc_id, info, 1000)
+      resp.respond(disc_id, JSON.stringify(info), 1000)
   }
   let itemName = ""
   if (payload.startsWith("{")) {
