@@ -26,7 +26,7 @@ try {
 let channels = {}
 
 
-const packageDefinition = protoLoader.loadSync('src/utils/lightning.proto', loaderOptions);
+const packageDefinition = protoLoader.loadSync('src/rpc/lightning.proto', loaderOptions);
 const lnrpc = grpc.loadPackageDefinition(packageDefinition).lnrpc;
 const macaroon = fs.readFileSync(mac_path).toString('hex');
 process.env.GRPC_SSL_CIPHER_SUITES = 'HIGH+ECDSA';
