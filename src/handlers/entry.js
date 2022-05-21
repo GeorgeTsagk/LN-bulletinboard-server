@@ -37,8 +37,8 @@ addServiceHandler("channel", channel.channelHandler)
 const entryPoint = (message) => {
   const msg = message?.received_message
   const payload = message?.received_message?.payload
-  const disc_id = msg.discussion_id
-  const amtSat = msg?.amt_msat / 1000;
+  const disc_id = message?.received_message?.discussion_id
+  const amtSat = message?.received_message?.amt_msat / 1000;
   const args = payload.split(" ")
   console.log("Received request:", args)
   console.log("\tfor:", Number(Number(msg.amt_msat) / 1000), "sat")
