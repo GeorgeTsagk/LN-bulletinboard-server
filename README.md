@@ -2,7 +2,11 @@
 
 ## Intro
 
-This is an implementation of a "bulletin board"-like service over a Lightning Network Node.
+This is an implementation of a bulletin board service over a Lightning Network Node.
+
+The server runs on top of your node and waits for requests from nodes in the network for the bundle of services that it provides. The communication medium is the Lightning Network itself, as each request is a payment containing both the amount (e.g. the service fee) and the corresponding request data.
+
+To consume such services over the network you can use the [Bulletin Board Client](https://github.com/GeorgeTsagk/LN-bulletinboard-client).
 
 It is using the [c13n API](https://docs.c13n.io/projects/api/en/latest/).
 
@@ -10,11 +14,13 @@ It is using the [c13n API](https://docs.c13n.io/projects/api/en/latest/).
 
 You need a Lightning node (only `lnd` is supported currently) and deploy the [c13n daemon](https://github.com/c13n-io/c13n-go) on top of it.
 
-This enables a new API for your LN node, which includes data-related functionality. For more info on **data over Lightning** read [here](https://c13n.io/about/).
+This enables a new API for your LN node, which includes data-over-lightning functionality. For more info on **data over Lightning** read [here](https://c13n.io/about/).
 
 After launching the `c13n` daemon rename `config.sample.yaml` to `config.yaml` and fill in the required credentials for connecting to c13n.
 
 > NOTE: Currently the BulletinBoard server doesn't support authentication & TLS over the c13n API, so you will have to comment out the related lines in `c13n-go`'s configuration file.
+>
+> **Until user authentication and TLS are supported, do not run with remote c13n daemon.**
 ```yaml
 server:
   address: "localhost:9999"
