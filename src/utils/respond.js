@@ -18,7 +18,8 @@ var messageClient = new services.MessageService(api.apiUrl(), grpc.credentials.c
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const respond = async (id, text, amt_msat) => {
-    await delay(1000)
+    //TODO: replace user-controlled config parameter
+    await delay(500)
     messageClient.sendMessage(
         {
             discussion_id: parseInt(id),

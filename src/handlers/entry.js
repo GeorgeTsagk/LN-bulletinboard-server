@@ -7,14 +7,8 @@ const config = require('../config/config-loader')
 let items = {}
 
 const readItems = () => {
-  let doc
-  try {
-    doc = yaml.load(fs.readFileSync(__dirname + '/../../config.yaml', 'utf8'));
-    items = doc?.items
-    console.log("Successfully read items: \n", items)
-  } catch (e) {
-    console.log(e);
-  }
+  items = config.getConfig().items
+  console.log("Successfully read items: \n", items)
 }
 
 const entryPoint = (message) => {
