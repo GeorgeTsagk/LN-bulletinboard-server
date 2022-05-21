@@ -27,7 +27,6 @@ let serverError = false
 
 const openServer = async () => {
     serverError = false
-    entry.readItems();
     console.log("Openning listening stream for requests")
     let call = messageClient.SubscribeMessages({});
     call.on("data", (data) => {
