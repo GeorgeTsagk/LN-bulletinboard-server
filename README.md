@@ -8,7 +8,7 @@ The server runs on top of your node and waits for requests from nodes in the net
 
 To consume such services over the network you can use the [Bulletin Board Client](https://github.com/GeorgeTsagk/LN-bulletinboard-client).
 
-It is using the [c13n API](https://docs.c13n.io/projects/api/en/latest/).
+Both the server and the client use the [c13n API](https://docs.c13n.io/projects/api/en/latest/) to communicate over the Lightning Network.
 
 ## How to use
 
